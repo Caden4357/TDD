@@ -1,0 +1,25 @@
+npm i --save-dev jest
+
+Red Green Refactor:
+    Red: Write a failing test
+    Green: Write the simplest code to make the test pass
+    Refactor: Clean up the code
+
+The 3 rules of TDD:
+    1. Dont touch production code without a failing test - Red 
+    2. Dont add more than one test at a time - Green
+    3. Dont leave unnecessary code behind - Refactor
+
+note: have this script for running tests
+```
+    "test": "jest --watchAll --verbose"
+```
+note: to use import export add a bable.config.js file
+```
+    {
+        "presets": ["@babel/preset-env"]
+    } 
+```
+and "@babel/preset-env": "^7.23.9"   should be a dev dependency
+
+

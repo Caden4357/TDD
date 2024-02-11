@@ -1,0 +1,12 @@
+{
+  "name": "average-word-length",
+  "version": "1.0.0",
+  "description": "",
+  "main": "avg.test.js",
+  "scripts": {
+    "test": "jest --watchAll --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

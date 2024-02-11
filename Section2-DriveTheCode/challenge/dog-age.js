@@ -1,0 +1,1 @@
+export const dogAge = (age=0) => age*7
