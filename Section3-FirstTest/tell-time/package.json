@@ -1,0 +1,16 @@
+{
+  "name": "tell-time",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.9",
+    "jest": "^29.7.0"
+  }
+}

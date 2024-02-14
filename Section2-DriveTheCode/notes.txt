@@ -1,4 +1,4 @@
-npm i --save-dev jest
+Run: npm i --save-dev jest
 
 Red Green Refactor:
     Red: Write a failing test

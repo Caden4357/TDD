@@ -1,0 +1,3 @@
+The first test should be the simplest 
+hard code if you have to just ease into it 
+The first test is also the fastest 

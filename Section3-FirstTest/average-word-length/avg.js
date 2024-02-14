@@ -1,4 +1,4 @@
-export const avgWordLength = (sentence) => {
+export const getAvgWordLength = (sentence) => {
     const splitString = sentence.split(' ')
     if(sentence.length === 0){
         return 0
