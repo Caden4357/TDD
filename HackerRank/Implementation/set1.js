@@ -39,6 +39,46 @@ export const catAndMouse = (x,y,z) => {
 
 // ! Udemy JS algos and data structures computer science master class 
 // Write a function called sameFrequency. Given two positive integers, find out if the two numbers have the same frequency of digits.
+// export const sameFrequency = (num1, num2) => {
+//     num1 = num1.toString()
+//     num2 = num2.toString()
+//     let num1Map = {}
+//     let num2Map = {}
+//     if(num1.length !== num2.length){
+//         return false
+//     }
+//     for(let i = 0; i < num1.length; i++){
+//         console.log(num1[i]);
+//         if(num1Map[num1[i]]){
+//             num1Map[num1[i]]++
+//         }else{
+//             num1Map[num1[i]] = 1
+//         }
+//         if(num2Map[num2[i]]){
+//             num2Map[num2[i]]++
+//         }else{
+//             num2Map[num2[i]] = 1
+//         }
+//     }
+//     return JSON.stringify(num1Map) === JSON.stringify(num2Map)
+// }
+
+// ! CHATGPT 
+
+// The sameFrequency function you've provided checks if two numbers have the same frequency of digits. While your implementation works, there are several ways to refactor it for improved readability, efficiency, and maintainability. Here are some suggestions:
+
+// Use a Single Loop and Map
+// Instead of converting the numbers to strings twice and then creating two separate maps, you can create a single map for the first number to count the frequency of each digit and then decrement the count as you check the second number. This approach reduces space complexity and improves readability.
+
+// Early Return on Length Mismatch
+// You've already implemented an early return if the lengths of the numbers (as strings) do not match, which is great for efficiency.
+
+// Avoid JSON.stringify for Object Comparison
+// Using JSON.stringify to compare the objects works but is not the most efficient or reliable method for comparing maps because it depends on the order of keys. Instead, you can iterate over the keys of the first map and directly compare values.
+
+// Here's how you might refactor the code:
+
+// javascript
 export const sameFrequency = (num1, num2) => {
     const str1 = num1.toString();
     const str2 = num2.toString();
@@ -61,4 +101,4 @@ export const sameFrequency = (num1, num2) => {
     }
 
     return true;
-}
+};
