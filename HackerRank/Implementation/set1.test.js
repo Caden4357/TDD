@@ -1,4 +1,4 @@
-import {getMoneySpent} from './set1'
+import {getMoneySpent, catAndMouse, sameFrequency} from './set1'
 
 describe('Get Money Spent', () => {
     it('returns -1 if its not possible to buy both items', () => {
@@ -12,7 +12,22 @@ describe('Get Money Spent', () => {
     })
 })
 describe('2 cats and one mouse', () => {
-    it('returns Cat B', () => {
-        expect(catAndMouse).toBe('Cat B')
+    it('Returns the cat that catches the mouse first', () => {
+        expect(catAndMouse(2,5,4)).toBe('Cat B')
+    })
+    it('returns Mouse C if both cats land at the same time', () => {
+        expect(catAndMouse(1,3,2)).toBe('Mouse C')
+    })
+})
+
+describe('Same frequency', () => {
+    it('returns false if the numbers are different length', () => {
+        expect(sameFrequency(22, 222)).toBe(false)
+    })
+    it('returns true if 2 numbers are same frequency (contain exact same digits different order ok)', () => {
+        expect(sameFrequency(3589578, 5879385)).toBe(true)
+    })
+    it('returns false if the numbers are not the same frequency', () => {
+        expect(sameFrequency(34,14)).toBe(false)
     })
 })
