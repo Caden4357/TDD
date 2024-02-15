@@ -1,4 +1,4 @@
-import {getMoneySpent, catAndMouse, sameFrequency} from './set1'
+import {getMoneySpent, catAndMouse, sameFrequency, pickingNumbers} from './set1'
 
 describe('Get Money Spent', () => {
     it('returns -1 if its not possible to buy both items', () => {
@@ -29,5 +29,16 @@ describe('Same frequency', () => {
     })
     it('returns false if the numbers are not the same frequency', () => {
         expect(sameFrequency(34,14)).toBe(false)
+    })
+})
+
+describe('Picking Numbers', () => {
+    // it('returns a frequency counter object from an array', () => {
+    //     expect(pickingNumbers([4,5,6,3,3,1])).toStrictEqual({'4':1, '5':1, '6':1, '3':2, '1':1})
+    // })
+    it('returns the longest subarray of integers that all have a difference of 0 or 1 ', () => {
+        expect(pickingNumbers([4,5,6,3,3,1])).toBe(3)
+        expect(pickingNumbers([98,3,99,1,97,2])).toBe(2)
+
     })
 })

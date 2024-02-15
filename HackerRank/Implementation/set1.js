@@ -102,3 +102,46 @@ export const sameFrequency = (num1, num2) => {
 
     return true;
 };
+
+// ** Picking Numbers HackerRank
+// Given an array of integers, find the longest subarray where the absolute difference between any two elements is less than or equal to 1.
+// a = [1,1,2,2,4,4,5,5,5] the longest subarray that matches the criteria is -> [4,4,5,5,5]
+// seems like it doesnt have to be in consecutive order for example:
+// [4, 6, 5, 3, 3, 1] -> 3 because the longest array of ints meeting the criteria is [4,3,3] -> 4-3 = 0; 3-3 = 0
+// var that holds the length of the subarray since thats what we return 
+// its essentially counting how many numbers together all have a difference of either 0 or 1
+
+// counter = 0 -> 1 -> 2
+// [4,6,5,3,3,1]
+// instead of all this I could go through and do a frequency counter on the array. Then a loop through the frequency counter to see how many I have of that number that number +1 and that number -1 whatever I have more of I add to the amount of number I am on and compare that to the counter of longest subarray if its bigger replace if smaller or same size move on
+// 
+const pickingNumbers = (arr) => {
+    const frequencyCounter = {}
+    let count = 2
+    for (let num of arr) {
+        frequencyCounter[num] = (frequencyCounter[num] || 0) + 1
+    }
+    for(let key in frequencyCounter){
+        let keyAsNumber = parseInt(key);
+        if(frequencyCounter[keyAsNumber+1] && frequencyCounter[keyAsNumber-1]){
+            let higherVal = Math.max(frequencyCounter[keyAsNumber+1], frequencyCounter[keyAsNumber-1])
+            if((frequencyCounter[key] + higherVal) > count){
+                count = (frequencyCounter[key] + higherVal)
+            }
+        }
+        else if(frequencyCounter[keyAsNumber+1]){
+            if((frequencyCounter[key] + frequencyCounter[keyAsNumber+1]) > count){
+                count = (frequencyCounter[key] + frequencyCounter[keyAsNumber+1])
+            }
+        }
+        else if(frequencyCounter[keyAsNumber-1]){
+            if((frequencyCounter[key] + frequencyCounter[keyAsNumber-1]) > count){
+                count = (frequencyCounter[key] + frequencyCounter[keyAsNumber-1])
+            }
+        }else if(frequencyCounter[key] > count) {
+            count = frequencyCounter[key]
+        }
+    }
+    return count
+}
+console.log(pickingNumbers([4,5,6,3,3,1]));
