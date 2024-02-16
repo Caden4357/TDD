@@ -1,11 +1,11 @@
 export const getMoneySpent = (keyboards, drives, b) => {
     let maxToBeSpent = -1
-    const arrayToStartWith = keyboards.length > drives.length? keyboards: drives
-    const smallerArray = keyboards.length < drives.length? keyboards: drives
-    for(let i = 0; i < arrayToStartWith.length; i++){
-        for (let j = 0; j < smallerArray.length; j++){
+    const arrayToStartWith = keyboards.length > drives.length ? keyboards : drives
+    const smallerArray = keyboards.length < drives.length ? keyboards : drives
+    for (let i = 0; i < arrayToStartWith.length; i++) {
+        for (let j = 0; j < smallerArray.length; j++) {
             let total = arrayToStartWith[i] + smallerArray[j]
-            if(total <= b && total > maxToBeSpent){
+            if (total <= b && total > maxToBeSpent) {
                 maxToBeSpent = total
             }
         }
@@ -24,16 +24,16 @@ export const getMoneySpent = (keyboards, drives, b) => {
 //    x   z  y
 // -1-2-3-4-5-6-7-8-9-0-
 //  find the difference between x-z
-export const catAndMouse = (x,y,z) => {
+export const catAndMouse = (x, y, z) => {
     // Getting cats distance from mouse ensuring the number is positive
-    let firstCatsDistance = x <= z? z-x:x-z
-    let secondCatsDistance = y <= z? z-y:y-z
+    let firstCatsDistance = x <= z ? z - x : x - z
+    let secondCatsDistance = y <= z ? z - y : y - z
 
-    if(firstCatsDistance === secondCatsDistance){
+    if (firstCatsDistance === secondCatsDistance) {
         return 'Mouse C'
     }
-    else{
-        return firstCatsDistance < secondCatsDistance? 'Cat A':'Cat B'
+    else {
+        return firstCatsDistance < secondCatsDistance ? 'Cat A' : 'Cat B'
     }
 }
 
@@ -144,4 +144,32 @@ const pickingNumbers = (arr) => {
     }
     return count
 }
-console.log(pickingNumbers([4,5,6,3,3,1]));
+console.log(pickingNumbers([7, 12, 13, 19, 17, 7, 3, 18, 9, 18, 13, 12, 3, 13, 7, 9, 18, 9, 18, 9, 13, 18, 13, 13, 18, 18, 17, 17, 13, 3, 12, 13, 19, 17, 19, 12, 18, 13, 7, 3, 3, 12, 7, 13, 7, 3, 17, 9, 13, 13, 13, 12, 18, 18, 9, 7, 19, 17, 13, 18, 19, 9, 18, 18, 18, 19, 17, 7, 12, 3, 13, 19, 12, 3, 9, 17, 13, 19, 12, 18, 13, 18, 18, 18, 17, 13, 3, 18, 19, 7, 12, 9, 18, 3, 13, 13, 9, 7]));
+
+
+const pickingNumbersRefactored = (a) => {
+    const frequencyCounter = {};
+    let maxSubarrayLength = 0; // More descriptive variable name for what we're tracking
+
+    // Build the frequency counter
+    for (let num of a) {
+        frequencyCounter[num] = (frequencyCounter[num] || 0) + 1;
+    }
+
+    // Iterate over the frequency counter to find the max length of a subarray
+    for (let key in frequencyCounter) {
+        let keyAsNumber = parseInt(key);
+        let currentCount = frequencyCounter[key];
+        let nextCount = frequencyCounter[keyAsNumber + 1] || 0; // Directly handle undefined cases
+        let prevCount = frequencyCounter[keyAsNumber - 1] || 0;
+
+        // Max of current and one adjacent (either next or previous)
+        let maxAdjacentSum = Math.max(currentCount + nextCount, currentCount + prevCount);
+
+        // Update maxSubarrayLength if this combination is larger
+        maxSubarrayLength = Math.max(maxSubarrayLength, maxAdjacentSum);
+    }
+
+    return maxSubarrayLength;
+}
+console.log(pickingNumbersRefactored([7, 12, 13, 19, 17, 7, 3, 18, 9, 18, 13, 12, 3, 13, 7, 9, 18, 9, 18, 9, 13, 18, 13, 13, 18, 18, 17, 17, 13, 3, 12, 13, 19, 17, 19, 12, 18, 13, 7, 3, 3, 12, 7, 13, 7, 3, 17, 9, 13, 13, 13, 12, 18, 18, 9, 7, 19, 17, 13, 18, 19, 9, 18, 18, 18, 19, 17, 7, 12, 3, 13, 19, 12, 3, 9, 17, 13, 19, 12, 18, 13, 18, 18, 18, 17, 13, 3, 18, 19, 7, 12, 9, 18, 3, 13, 13, 9, 7]));
