@@ -13,7 +13,7 @@ const frequencyCounter = (arr1, arr2) => {
     }
     console.log(frequency, frequency2);
 }
-console.log(frequencyCounter([1,2,3,4,5], [1,2,3,5,2]));
+console.log(frequencyCounter([1,2,3,4,5], [1,2,3,5,4]));
 
 // Anagram 
 const validAnagram = (str1, str2) => {

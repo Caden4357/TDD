@@ -99,7 +99,6 @@ export const sameFrequency = (num1, num2) => {
         }
         countNum1[digit] -= 1;
     }
-
     return true;
 };
 

@@ -75,3 +75,47 @@ console.log(maxSubarraySum([100,200,300,400], 2)); // 700
 console.log(maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)); // 39
 console.log(maxSubarraySum([-3,4,0,-2,6,-1], 2)); // 5
 console.log(maxSubarraySum([2,3], 3)); // null
+
+// Write a function called minSubArrayLen which accepts two parameters - an array of positive integers and a positive integer.
+
+// This function should return the minimal length of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
+// Examples:
+// minSubArrayLen([2,3,1,2,4,3], 7) // 2 -> because [4,3] is the smallest subarray
+// minSubArrayLen([2,1,6,5,4], 9) // 2 -> because [5,4] is the smallest subarray
+// minSubArrayLen([3,1,7,11,2,9,8,21,62,33,19], 52) // 1 -> because [62] is greater than 52
+// minSubArrayLen([1,4,16,22,5,7,8,9,10],39) // 3
+// minSubArrayLen([1,4,16,22,5,7,8,9,10],55) // 5
+// minSubArrayLen([4, 3, 3, 8, 1, 2, 3], 11) // 2
+// minSubArrayLen([1,4,16,22,5,7,8,9,10],95) // 0
+
+// 1. Initialize Variables
+// Create two pointers or indices, start and end, initially set to the start of the array. These will define the current subarray being considered.
+// Initialize a variable to track the current sum of the subarray, e.g., currentSum = 0.
+// Initialize a variable to track the minimum length of the subarray that meets the condition, e.g., minLength = Infinity (or a large number to represent infinity). This variable will be updated as we find suitable subarrays.
+// Initialize a variable to track the array's length, for convenience.
+// 2. Expand the Window
+// Using a while loop, expand the end of the window to the right by incrementing end until the currentSum is greater than or equal to the target integer or until end reaches the array's end.
+// As you move end to the right, add the value of the current element pointed by end to currentSum.
+// 3. Shrink the Window
+// Once the currentSum is greater than or equal to the target, you have a potential candidate for the minimal length subarray.
+// Update minLength if the length of the current subarray (end - start + 1) is smaller than the current minLength.
+// To find the smallest such subarray, start shrinking the window from the left by incrementing start and subtracting the value of the element at start from currentSum until currentSum is less than the target integer.
+
+const minSubArrayLen = (arr, targetSum) => {
+    let start = 0;
+    let end = 0;
+    let currentSum = 0;
+    let minLength = Infinity;
+    let arrLength = arr.length;
+    while(end < arrLength){
+        currentSum+=arr[end];
+        while(currentSum >= targetSum){
+            minLength = Math.min(minLength, end-start+1);
+            currentSum -= arr[start];
+            start++
+        }
+        end++
+    }
+    return minLength === Infinity ? 0 : minLength;
+}
+console.log(minSubArrayLen([1,2,3,4,5,6,7,8], 9));
