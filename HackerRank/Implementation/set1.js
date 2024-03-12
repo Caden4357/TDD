@@ -1,3 +1,40 @@
+function hurdleRace(k, height) {
+    console.log(k, height);
+    let max = 0;
+    for(let hurdle of height){
+        if(hurdle > k && (hurdle-k) > 1 ){
+            console.log(k, hurdle);
+            max = Math.max(max, hurdle)
+        }
+    }
+    return max === 0 ? 0 : max - k;
+
+}
+console.log(hurdleRace(4, [1, 6, 3, 5, 2])) // 2
+console.log(hurdleRace(7, [2, 5, 4, 5, 2])) // 0;
+
+function countApplesAndOranges(s, t, a, b, apples, oranges) {
+    let applesOnSamsHouse = 0
+    let orangesOnSamsHouse = 0
+    for(let i = 0; i < apples.length; i++){
+        // we need to add a to each item in the array 
+        if((apples[i] + a) >= s && (apples[i] + a) <= t){
+            applesOnSamsHouse++
+        }
+    }
+    for(let i = 0; i < oranges.length; i++){
+        // we need to add a to each item in the array 
+        if((oranges[i] + b) >= s && (oranges[i] + b) <= t){
+            orangesOnSamsHouse++
+        }
+    }
+    console.log(applesOnSamsHouse);
+    console.log(orangesOnSamsHouse);
+
+}
+countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6]); // 1 1
+
+
 export const getMoneySpent = (keyboards, drives, b) => {
     let maxToBeSpent = -1
     const arrayToStartWith = keyboards.length > drives.length ? keyboards : drives

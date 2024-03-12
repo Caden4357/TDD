@@ -1,3 +1,5 @@
+// write a function call areThereDuplicates that takes in a variable number of arguments and checks whether there are any duplicates among the arguments passed in. You can solve this using the frequency counter pattern.
+// ! hint use the spread operator to convert the arguments into an array
 const areThereDuplicates = (...args) => {
     const frequencyCounter = {};
     for (let num of args) {
@@ -12,7 +14,7 @@ const areThereDuplicates = (...args) => {
 }
 console.log(areThereDuplicates(1, 2, 3, 4, 5, 6, 2)); // true
 console.log(areThereDuplicates('1', 'w', 'a', 'w')); // true
-console.log(areThereDuplicates('1', 'w', 'a', 1)); // false
+console.log(areThereDuplicates('1', 'w', 'a', '2')); // false
 
 // Write a function called averagePair. Given a sorted array of integers and a target average, determine if there is a pair of values in the array where the average of the pair equals the target average. There may be more than one pair that matches the average target.
 const averagePair = (arr, target) => {
