@@ -44,3 +44,25 @@ export function angryProfessor(k, a) {
     console.log(k);
     return onTimeOrEarlyCount < k ? 'YES' : 'NO';
 }
+
+// https://www.hackerrank.com/challenges/beautiful-days-at-the-movies/problem?isFullScreen=true
+// essentially, we are given a range of numbers and we are to find the number of beautiful days in the range. A beautiful day is a day where the absolute difference between the day and the reverse of the day is divisible by k
+// for example, if we have a range of 20 to 23 and k = 6, the beautiful days are 20 and 22 because the absolute difference between 20 and 02 is 18 and 18 % 6 === 0 and the absolute difference between 22 and 22 is 0 and 0 % 6 === 0
+function beautifulDays(i, j, k) {
+    let days = 0;
+    // for loop from i to j including j
+    for (let d = i; d <= j; d++){
+        let reversedN = reversedNum(d)
+        let difference = d-reversedN
+        if(difference < 0){
+            difference = difference*-1
+        }
+        if(difference%k === 0){
+            days++
+        }
+        
+    }
+    return days
+}
+const reversedNum = num => parseFloat(num.toString().split('').reverse().join('')) * Math.sign(num)
+console.log(beautifulDays(20,23,6));

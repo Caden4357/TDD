@@ -1,4 +1,4 @@
-import { designerPDFViewer, utopiaTreeGrowth, angryProfessor } from "./set1";
+import { designerPDFViewer, utopiaTreeGrowth, angryProfessor, beautifulDays } from "./set1";
 describe('Hello', () => {
     // it('returns the height of the tallest letter in the string', () => {
     //     expect(designerPDFViewer([1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], 'abc')).toBe(3);
@@ -21,5 +21,10 @@ describe('Angry Professor', () => {
         expect(angryProfessor(3,[-2,-1,0,1,2])).toBe('NO')
         expect(angryProfessor(2,[0,-1,2,1])).toBe('NO')
         expect(angryProfessor(4,[-93, -86, 49, -62, -90, -63, 40, 72, 11, 67])).toBe('NO')
+    })
+})
+describe('Beautiful Days', () => {
+    it('returns the number of beautiful days in the range', () => {
+        expect(beautifulDays(20, 23, 6)).toBe(2)
     })
 })
