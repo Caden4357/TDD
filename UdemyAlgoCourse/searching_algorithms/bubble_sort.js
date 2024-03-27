@@ -24,6 +24,8 @@ function swap(arr, idx1, idx2){
 // so we start from the end and go to the beginning
 // we can also add a noSwaps variable to break out of the loop if the array is already sorted
 
+// with this solution each itteration we do one less comparison because the largest value is already at the end
+
 function bubbleSortOptimized(arr) {
     let noSwaps;
     for (let i = arr.length; i > 0; i--){
@@ -41,3 +43,6 @@ function bubbleSortOptimized(arr) {
     return arr;
 }
 console.log(bubbleSortOptimized([37, 45, 29, 8])); // [ 8, 29, 37, 45 ]
+
+// Time complexity is O(n^2) but if the data is mostly sorted it can be O(n) because of the noSwaps variable
+// Space complexity is O(1) because we are not creating any new data structures
